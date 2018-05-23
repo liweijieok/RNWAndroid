@@ -1,7 +1,7 @@
 /**
  * @author liweijie
  * create on 2018/5/23.
- * email:liweijie@aiyappp.com
+ * email:liweijieok@qq.com
  * desc: 对FlatList的封装
  * lastModify:
  */
