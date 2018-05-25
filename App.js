@@ -5,14 +5,16 @@
  */
 
 import React, {Component} from "react";
-import HomePage from "./js/page/HomePage";
+import {FRouters} from "./js/Router";
+import {Provider} from "react-redux";
+import store from "./js/store/store";
 
-
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
     render() {
         return (
-            <HomePage/>
+            <Provider store={store}>
+                {FRouters()}
+            </Provider>
         );
     }
 }

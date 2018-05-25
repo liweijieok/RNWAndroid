@@ -14,7 +14,6 @@ const HEADER = (
         "Content-Type": "multipart/form-data",
         "Connection": "keep-alive",
         "Cache-Control": "no-cache",
-        "Host":"www.wanandroid.com",
         "Accept": "application/json;charset=UTF-8"
     }
 );
@@ -56,10 +55,18 @@ function doPost(params, url) {
     Log.i("http url=>" + url);
     const request = fetch(url, body(params))
         .then(res => {
-            Log.i("http res=>" + JSON.stringify(res));
+            if (res.ok) {
+                return res.json();
+            }
+            return {code: -2, message: "请求超时，服务器发生错误"};
+        })
+        .then(json => {
+            Log.i("http response =>" + JSON.stringify(json));
+            return json;
         })
         .catch(e => {
             Log.i("http error =>" + e);
+            return e;
         });
     return wrapRequest(request);
 }

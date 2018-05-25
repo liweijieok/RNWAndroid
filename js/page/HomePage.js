@@ -11,9 +11,15 @@ import {login} from "../http/Api";
 import {View, Text} from "react-native";
 
 export default class HomePage extends Component {
-    componentDidMount(){
+
+    static defaultProps = {
+        title: "Home"
+    };
+
+    componentDidMount() {
         login("liweijie", "liweijie");
     }
+
     render() {
         return (
             <View>
